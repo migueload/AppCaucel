@@ -1,0 +1,8 @@
+<div *ngIf="showSplash" class="splash">
+  <div class="spinner"></div>
+  <img src="assets/imgs/logo.gif" width="65%">
+</div>
+
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

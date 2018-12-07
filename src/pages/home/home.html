@@ -1,0 +1,263 @@
+<ion-menu [content]="content">
+
+<!-- Logo en el Menu Principal Deplegable-->
+ <ion-header>
+    <ion-toolbar>
+      <div align="center" style="background-image: url('../assets/imgs/fnd2.png');">
+        <img src="../assets/imgs/logotrans.png" width="50%" height="auto">
+      </div>
+    </ion-toolbar>
+  </ion-header>  
+
+<!-- Menu Principal Desplegable-->
+<ion-content id="fondo">
+  <ion-card>     
+    <ion-card-content  id="fondo">
+      <ion-card-title>
+        <div class="lt">Mapa</div>
+      </ion-card-title>   
+      
+      <ion-item (click)="irCercadeti()" id="fondolt">
+       <div class="ic"><ion-icon name="pin" md="md-pin"></ion-icon></div>
+        <div class="lt1">&nbsp;Cerca de ti</div>
+      </ion-item>
+
+      <ion-card-title>
+        <div class="lt">&nbsp;Promociones</div>
+      </ion-card-title>   
+        
+        <ion-item id="fondolt">
+        <div class="ic"><ion-icon name="star-outline"></ion-icon></div>
+            <div class="lt1">&nbsp;Ultimo Momento</div>
+        </ion-item>
+        <ion-item (click)="irDestacados()" id="fondolt">
+          <div class="ic"><ion-icon name="ribbon"></ion-icon></div>
+            <div class="lt1">&nbsp;Destacados</div>
+        </ion-item>
+
+      <ion-card-title>
+        <div class="lt">&nbsp;Categorias</div>
+      </ion-card-title>   
+        <ion-item (click)="irDirectorio()" id="fondolt">
+          <div class="ic"><ion-icon name="apps"></ion-icon></div>
+          <div class="lt1">&nbsp;Directorio</div>
+        </ion-item>       
+        
+        <ion-item (click)="irRevista()" id="fondolt">
+        <div class="ic"> <ion-icon name="book"></ion-icon></div>
+          <div class="lt1">&nbsp;Revistas</div>
+        </ion-item>
+        <ion-item (click)="irInteres()" id="fondolt">
+    <div class="ic"><ion-icon name="checkmark-circle"></ion-icon></div>
+          <div class="lt1">&nbsp;De interes</div>
+        </ion-item>
+        <ion-item (click)="irAnunciate()" id="fondolt">          
+          <div class="ic"><ion-icon name="flag"></ion-icon></div>
+          <div class="lt1">&nbsp;Anunciate</div>
+        </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+</ion-menu>
+
+<!--search dinamico para buquedas por criterio de nombre de anuncio-->
+<ion-header>  
+  <ion-navbar color="danger">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>    
+    <ion-searchbar (ionInput)="filtrarAnuncios($event)">
+    </ion-searchbar>
+  </ion-navbar>
+
+<!-- Menu de botones para filtros por Criterio de categoria al presionar-->
+  <ion-navbar color="blanco">   
+  <div class="btPrincipal">     
+   <ion-grid>
+     <ion-row>
+       <ion-col col-2> 
+        <button ion-button icon-only clear (click)="filtrarAlimentos()">
+            <div class="icono">
+              <img src="../assets/imgs/alimentos.png">
+            </div>
+        </button>       
+        <div class="ltBotones">Alimentos Bares</div>          
+       </ion-col>
+       <ion-col col-2>
+          <button ion-button icon-only clear (click)="filtrarSalud()">
+            <div class="icono">
+              <img src="../assets/imgs/salud.png">
+            </div>
+          </button> 
+          <div class="ltBotones">Salud Belleza</div>          
+       </ion-col>
+       <ion-col col-2>
+         <button ion-button icon-only clear (click)="filtrarEscuela()">
+            <div class="icono">
+              <img src="../assets/imgs/academia.png">
+            </div>
+         </button> 
+         <div class="ltBotones">Escuela Academia</div>          
+       </ion-col>
+       <ion-col col-2>
+         <button ion-button icon-only clear (click)="filtrarTurismo()">
+            <div class="icono">
+              <img src="../assets/imgs/viajes.png">
+            </div>
+         </button>
+         <div class="ltBotones">Viajes Turismo</div>           
+       </ion-col>
+       <ion-col col-2>
+         <button ion-button icon-only clear (click)="filtrarMascotas()">
+            <div class="icono">
+              <img src="../assets/imgs/mascotas.png">
+            </div>
+         </button> 
+         <div class="ltBotones">Mascotas</div>          
+       </ion-col>
+       <ion-col col-2>
+         <button ion-button icon-only clear (click)="filtrarTalleres()">
+            <div class="icono">
+              <img src="../assets/imgs/taller.png">
+            </div>
+         </button>
+         <div class="ltBotones">Taller Servicios</div>           
+       </ion-col>
+     </ion-row>
+   </ion-grid>    
+   </div>       
+  </ion-navbar>
+</ion-header>
+
+<!-- Despligue de los anuncios filtrados por categoria-->
+<ion-content padding>
+<div style="margin-top: 0px;">  
+<ion-list>    
+<div class="ltCategoria2">{{categoria}}</div>
+  <ion-item *ngFor="let anuncio of items">    
+    <ion-thumbnail item-start (click)="irDirectorioDetalle(anuncio)">
+      <img src="http://api.caucelpublicidad.com/assets/img/anuncio/{{anuncio.imagen}}" width="70%"> 
+    </ion-thumbnail>
+    <div class="ltTitulo">{{anuncio.nombre}}</div>   
+    <div class="ltDescripcion">{{anuncio.descripcion}}</div>    
+
+<!-- Botones de Utilidades por anuncio  -->
+<div class="btUtilidades">  
+  <div class="bt" align="center">
+    <button ion-button color="boton" clear (click)="irDirectorioDetalle(anuncio)">
+        <ion-icon name="list-box"></ion-icon>     
+     </button>
+     <button ion-button color="boton" clear (click)="irAnuncioGps(anuncio)">
+        <ion-icon name="pin"></ion-icon>     
+     </button>
+     <button ion-button color="boton" clear (click)="share(anuncio)">
+        <ion-icon name="share"></ion-icon>     
+     </button>
+     <button ion-button color="boton" clear (click)="llamada(anuncio)">
+        <ion-icon name="call"></ion-icon>     
+     </button>
+  </div>
+</div>
+<!--*********************************************-->
+  </ion-item>  
+</ion-list>
+</div>
+
+<hr>
+<!-- Titulos de anuncios destacados en div centrado en azul con sombras-->
+<div align="center">   
+  <div class="ltDestacados">
+  <ion-icon name="ribbon"></ion-icon>
+    ANUNCIOS DESTACADOS
+  </div>
+</div>
+
+<!-- ion card para mostrar anuncios destacados-->
+<ion-content class="card-background-page">
+  <ion-card *ngFor="let destacado of destacados">
+    <img src="http://api.caucelpublicidad.com/assets/img/anuncio/{{destacado.imagen}}" (click)="irDirectorioDetalle(destacado)"/>
+<!-- Botones de Utilidades por anuncio  -->
+<div class="btUtilidades">    
+    <button ion-button color="boton" clear (click)="irDirectorioDetalle(destacado)">
+        <ion-icon name="list-box"></ion-icon>     
+     </button>
+     <button ion-button color="boton" clear (click)="irAnuncioGps(destacado)">
+        <ion-icon name="pin" color="boton"></ion-icon>     
+     </button>
+     <button ion-button color="boton" clear (click)="share(destacado)">
+        <ion-icon name="share"></ion-icon>     
+     </button>
+     <button ion-button color="boton" clear (click)="llamada(destacado)">
+        <ion-icon name="call"></ion-icon>     
+     </button>  
+</div>
+<!--**********************************************-->
+  </ion-card>        
+</ion-content>
+
+
+<!-- Carrusel-->
+  <ion-slides pager >
+  <ion-slide style="background-color: white;" *ngFor="let carrusel of carruseles">
+   <img src="http://api.caucelpublicidad.com/assets/img/carrusel/{{carrusel.imagen}}" width="70%"> 
+  </ion-slide>  
+ </ion-slides>
+<hr>
+<!--Novedades -->
+<div align="center">   
+  <div class="ltDestacados">
+    <ion-icon name="checkmark-circle"></ion-icon>    
+    TEMAS DE INTERES
+  </div>
+</div>
+<div>
+<ion-list>
+  <ion-item *ngFor="let articulo of articulos">
+    <ion-thumbnail item-start>
+      <img src="http://api.caucelpublicidad.com/assets/img/articulo/{{articulo.imagen}}" width="70%"> 
+    </ion-thumbnail>
+    <div class="ltTitulo">{{articulo.titulo}}</div>
+    <div class="ltDescripcion">{{articulo.descripcion}}</div>
+    <button ion-button clear item-end (click)=irArticuloDetalle(articulo)>Ver mas</button>
+  </ion-item>
+</ion-list>
+</div>
+
+<ion-list>
+  <ion-item>
+   <div class="ltDestacados">Si deseas la revista digital suscríbete aquí!</div>
+  </ion-item>
+  <ion-item>
+    <ion-label>Escribe tu E-mail</ion-label>
+    <ion-input type="email"></ion-input>
+  </ion-item>  
+</ion-list>
+<div padding>
+  <button ion-button color="danger" full>Suscribete</button>
+</div>
+
+
+<ion-card>
+  <ion-card-header style="background-image: url('../assets/imgs/fnd1.png');">
+    <span style="font-weight: bold;size: 14px;color:#fff;">Contactanos</span>
+  </ion-card-header>
+  <ion-card-content style="background-image: url('../assets/imgs/fnd1.png');">
+    <ion-thumbnail item-start>
+      <div class="caucel">
+        <img src="../assets/imgs/logo.png">  
+      </div>      
+    </ion-thumbnail>
+   Calle 62 #774 x 48B y 64A Herradura I
+   Ciudad Caucel CP. 97314
+   Mérida, Yucatán. 
+   fcruz@caucelpublicidad.com
+  </ion-card-content>
+</ion-card>
+<br><br><br><br>
+</ion-content>
+
+<ion-footer>
+  <img src="../assets/imgs/banner.png" width="100%">
+</ion-footer>
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

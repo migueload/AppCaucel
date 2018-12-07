@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>    
+    <ion-title>
+    <ion-icon name="apps"></ion-icon>
+   {{anuncio.nombre}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+<ion-card>  
+  <img src="http://api.caucelpublicidad.com/assets/img/anuncio/{{anuncio.imagen}}">
+  <ion-card-content>  
+    <ion-card-title>
+      <div class="ltTitulo">
+        <h2>
+        {{anuncio.nombre}}
+       </h2>
+      </div>
+      <div class="ltCategoria">
+          {{anuncio.categoria}}
+      </div>
+    </ion-card-title>    
+      <div class="ltDescripcion">
+        {{anuncio.descripcion}}
+      </div> 
+    <!--boton condicionado
+      <button ion-button color="danger" full *ngIf="ocultar()" (click)=guardarEstadisticas()>
+    -->
+    <button ion-button color="danger" full (click)=guardarEstadisticas()>
+    <ion-icon name="call"></ion-icon>&nbsp; Llama y Reserva
+    </button>  
+</ion-card-content>
+</ion-card>
+
+<ion-card>    
+  <ion-card-content>  
+          <img src="http://api.caucelpublicidad.com/assets/img/anuncio/{{anuncio.imagen1}}">
+   </ion-card-content>
+</ion-card> 
+<ion-card>    
+  <ion-card-content>  
+          <img src="http://api.caucelpublicidad.com/assets/img/anuncio/{{anuncio.imagen2}}">
+  </ion-card-content>
+</ion-card>                
+
+<ion-card>    
+  <ion-card-content>  
+          <img src="http://api.caucelpublicidad.com/assets/img/anuncio/{{anuncio.imagen3}}">
+  </ion-card-content>
+</ion-card>                
+
+<ion-card>    
+  <ion-card-content>  
+          <img src="http://api.caucelpublicidad.com/assets/img/anuncio/{{anuncio.imagen4}}">
+   </ion-card-content>
+</ion-card>                
+
+</ion-content>
+<ion-footer>
+  <img src="../assets/imgs/banner.png" width="100%">
+</ion-footer>

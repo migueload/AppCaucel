@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ion-icon name="flag"></ion-icon>
+      Temas de Interes
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-card *ngFor="let articulo of articulos">
+  <img src="http://api.caucelpublicidad.com/assets/img/articulo/{{articulo.imagen}}">
+  <ion-card-content>
+    <ion-card-title>
+      <div class="ltTitulo">{{articulo.titulo}}</div>
+    </ion-card-title>    
+       <div class="ltDescripcion"><p>{{articulo.descripcion}}</p></div>    
+  </ion-card-content>
+</ion-card>
+
+</ion-content>
+<ion-footer>
+  <img src="../assets/imgs/banner.png" width="100%">
+</ion-footer>

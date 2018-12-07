@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>  	
+    <ion-title>
+    	<ion-icon name="ribbon"></ion-icon>
+    	Anuncios Destacado
+	</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div style="margin-top: 0px;">  
+<ion-list>    
+<div class="ltCategoria2"></div>
+  <ion-item *ngFor="let destacado of destacados">    
+    <ion-thumbnail item-start (click)="irDirectorioDetalle(destacado)">
+      <img src="http://api.caucelpublicidad.com/assets/img/anuncio/{{destacado.imagen}}" width="70%"> 
+    </ion-thumbnail>
+    <div class="ltTitulo">{{destacado.nombre}}</div>   
+    <div class="ltDescripcion">{{destacado.descripcion}}</div>    
+
+<!-- Botones de Utilidades por anuncio  -->
+
+<div class="btUtilidades">  
+  <div class="bt" align="center">
+	    <button ion-button color="boton" clear (click)="irDirectorioDetalle(destacado)">
+	     <ion-icon name="list-box"></ion-icon>     
+	     </button>
+	     <button ion-button color="boton" clear (click)="irAnuncioGps(destacado)">
+	     <ion-icon name="pin"></ion-icon>     
+	     </button>
+	     <button ion-button color="boton" clear (click)="share(destacado)">
+	        <ion-icon name="share"></ion-icon>     
+	     </button>
+	     <button ion-button color="boton" clear (click)="llamada(destacado)">
+	        <ion-icon name="call"></ion-icon>     
+	     </button>
+  </div>
+</div>
+
+<!--*********************************************-->
+  </ion-item>  
+</ion-list>
+</div>
+</ion-content>
+<ion-footer>
+  <img src="../assets/imgs/banner.png" width="100%">
+</ion-footer>

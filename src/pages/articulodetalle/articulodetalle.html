@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>    
+  <ion-title>
+    <ion-icon name="apps"></ion-icon>
+    Tema de Interes
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="ltCategoria2">{{articulo.categoria}}</div>
+<ion-card>  
+  <img src="http://api.caucelpublicidad.com/assets/img/articulo/{{articulo.imagen}}"
+  width="100%" height="240">
+  <ion-card-content>
+    <ion-card-title>
+      <div class="ltTitulo"><h2>{{articulo.titulo}}</h2></div>
+      </ion-card-title>
+	    <div class="ltDescripcion">
+	      {{articulo.detalle}}
+      </div>	    
+  </ion-card-content>
+</ion-card>
+</ion-content>
+<ion-footer>
+  <img src="../assets/imgs/banner.png" width="100%">
+</ion-footer>

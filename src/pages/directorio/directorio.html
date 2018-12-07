@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    <ion-icon name="apps"></ion-icon>
+   Directorio
+  </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>    
+    <ion-searchbar (ionInput)="filtrarAnuncios($event)">
+    </ion-searchbar>    
+  </ion-navbar>
+<ion-list >
+<ion-item *ngFor="let anuncio of items" (click)=irDirectorioDetalle(anuncio)>
+    <ion-thumbnail item-start>
+      <img src="http://api.caucelpublicidad.com/assets/img/anuncio/{{anuncio.imagen}}">
+    </ion-thumbnail>
+    <div class="ltTitulo">{{anuncio.nombre}}</div>
+    <div class="ltDescripcion">{{anuncio.categoria}}</div>
+    <button ion-button clear>Ver Detalles</button>
+</ion-item>
+</ion-list>
+</ion-content>
+<ion-footer>
+  <img src="../assets/imgs/banner.png" width="100%">
+</ion-footer>

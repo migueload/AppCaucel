@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>     
+    <ion-title>
+    <ion-icon name="flag"></ion-icon>
+    Anunciate
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+<form (ngSubmit)="guardarAnunciante()">
+<ion-list>
+  <ion-item>
+    <ion-label fixed>Nombre</ion-label>
+    <ion-input type="text" name="nombre" [(ngModel)]="datos.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Correo</ion-label>
+    <ion-input type="email" name="correo" [(ngModel)]="datos.correo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Telefono</ion-label>
+    <ion-input type="text" name="telefono" [(ngModel)]="datos.telefono"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Por Favor escribe tus comentarios</ion-label>
+    <ion-input type="text" name="mensaje" [(ngModel)]="datos.mensaje"></ion-input>
+  </ion-item>
+</ion-list>
+<button ion-button color="primary" full>Enviar</button>
+</form>
+<hr>
+<ion-card>
+  <ion-card-header style="background-image: url('../assets/imgs/fnd1.png');">
+    <span style="font-weight: bold;size: 14px;color:#fff;">Contactanos</span>
+  </ion-card-header>
+  <ion-card-content style="background-image: url('../assets/imgs/fnd1.png');">
+    <ion-thumbnail item-start>
+      <div class="caucel">
+        <img src="../assets/imgs/logo.png">  
+      </div>      
+    </ion-thumbnail>
+   Calle 62 #774 x 48B y 64A Herradura I
+   Ciudad Caucel CP. 97314
+   Mérida, Yucatán. 
+   fcruz@caucelpublicidad.com
+  </ion-card-content>
+</ion-card>
+
+</ion-content>
